@@ -2,21 +2,15 @@
   <div class="w-full max-w-md space-y-8">
     <form class="bg-white shadow-md rounded px-6 pt-6 pb-6 mb-4">
       <div class="mb-4">
-        <label class="label" for="username">
-          E-mail
-        </label>
-        <input class="input-control" id="username" type="text" placeholder="E-mail">
+        <app-label description="E-mail" for="email" />
+        <app-input name="email" type="email" placeholder="E-mail"/>
       </div>
       <div class="mb-4">
-        <label class="label" for="password">
-          Senha
-        </label>
-        <input class="input-control" id="password" type="password" placeholder="Senha">
+        <app-label description="Senha" for="password" />
+        <app-input name="password" type="password" placeholder="Senha"/>
       </div>
       <div class="flex items-center justify-between">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-          Entrar
-        </button>
+        <app-button description="Entrar" />
         <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
           Recuperar Senha ?
         </a>
