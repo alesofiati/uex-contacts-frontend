@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './../../components/page-not-found/page-not-found.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'register', title: 'Cadastro', component:RegisterComponent },
   { path: 'forgot-password', title: 'Esqueceu a Senha', component:ForgotPasswordComponent },
   { path: 'reset-password/token/:token', title: 'Recuperar Senha', component:ResetPasswordComponent },
+  { path: '**', title: 'Teste', component:PageNotFoundComponent },
 ];
 
 @NgModule({
