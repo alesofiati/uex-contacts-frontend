@@ -13,6 +13,8 @@ export class TemplatePageTitleStrategy extends TitleStrategy{
     const title = this.buildTitle(routeState)
     if(title !== undefined){
       this.title.setTitle(`UEX Contacts | ${title}`)
+    }else{
+      this.title.setTitle(`UEX Contacts`)
     }
   }
 

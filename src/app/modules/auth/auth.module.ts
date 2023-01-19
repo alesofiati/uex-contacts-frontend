@@ -1,3 +1,4 @@
+import { CardComponent } from './../../components/card/card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -6,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ButtonComponent } from 'src/app/components/button/button.component';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 
 //components
 import { LabelComponent } from './../../components/label/label.component';
@@ -19,12 +21,14 @@ import { InputComponent } from './../../components/input/input.component';
     ButtonComponent,
     InputComponent,
     LabelComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,
     AuthRoutingModule
   ],
-  exports: [ButtonComponent, InputComponent, LabelComponent]
+  exports: [ButtonComponent, InputComponent, LabelComponent, CardComponent]
 })
 export class AuthModule { }
