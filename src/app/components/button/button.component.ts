@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
   @Input() description:string = 'Default'
   @Input() type:string = 'submit'
+  @Input() disabled: boolean = false
 }

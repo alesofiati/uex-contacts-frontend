@@ -1,1 +1,13 @@
-<input type="{{type}}" name="{{name}}" id="{{name}}" placeholder="{{placeholder}}" class="input-control">
+<input
+  [type]="type"
+  [id]="name"
+  [placeholder]="placeholder"
+  [formControl]="control"
+  [ngClass]="display()"
+>
+<ng-container *ngIf="displayErrors()">
+  <p class="message-error" *ngIf="control.errors?.['required']" >Preencha o campo {{ fieldName() }}</p>
+  <p class="message-error" *ngIf="control.errors?.['email']" >O e-mail informado não é valído</p>
+
+  <p class="message-error" *ngIf="control.errors?.['passwordMatch']" >As senhas não são identicas</p>
+</ng-container>

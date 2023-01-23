@@ -6,7 +6,13 @@
   .input-control{
     @apply relative block w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm;
   }
+  .input-control-error{
+    @apply relative block w-full rounded-md border px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 border-red-500 focus:outline-none ring-red-500 sm:text-sm;
+  }
   .label{
     @apply block text-gray-700 text-sm font-bold mb-2
+  }
+  .message-error{
+    @apply text-red-500 text-xs italic
   }
 }
