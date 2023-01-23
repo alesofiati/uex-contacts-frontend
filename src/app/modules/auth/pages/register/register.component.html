@@ -1,24 +1,27 @@
 <div class="flex h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8">
-    <form class="bg-white shadow-md rounded px-6 pt-6 pb-6 mb-4">
+    <form class="bg-white shadow-md rounded px-6 pt-6 pb-6 mb-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
         <app-label description="Nome" for="name"/>
-        <app-input name="name" placeholder="Ex: Maria"/>
+        <app-input name="name" placeholder="Ex: Maria" [control]="$any(registerForm.get('name'))" [required]="true"/>
       </div>
       <div class="mb-4">
         <app-label description="E-mail" for="email"/>
-        <app-input name="email" type="email" placeholder="Ex: email@email.com"/>
+        <app-input name="email" type="email" placeholder="Ex: email@email.com" [control]="$any(registerForm.get('email'))" />
       </div>
       <div class="mb-4">
         <app-label description="Senha" for="password"/>
-        <app-input name="password" type="password" placeholder="Senha"/>
+        <app-input name="password" type="password" placeholder="Senha" [control]="$any(registerForm.get('password'))" />
       </div>
       <div class="mb-4">
         <app-label description="Confirmar Senha" for="password_confirmation"/>
-        <app-input name="password_confirmation" type="password" placeholder="Confirmar Senha"/>
+        <app-input name="password_confirmation" type="password" placeholder="Confirmar Senha" [control]="$any(registerForm.get('password_confirmation'))"/>
+      </div>
+      <div class="p-2">
+        {{registerForm.value | json}}
       </div>
       <div class="flex items-center justify-between">
-        <app-button description="Cadastrar"/>
+        <app-button description="Cadastrar" [disabled]="!registerForm.valid"/>
         <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" routerLink="/login">
           Login
         </a>
