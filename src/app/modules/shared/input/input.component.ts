@@ -61,8 +61,40 @@ export class InputComponent implements OnInit {
       this.fieldName = result[0].value
       return
     }
-    this.fieldName = ''
+    this.fieldName = this.name
     return
+  }
+
+  getMessage(): string
+  {
+    if(this.control?.errors){
+      let validation:string = Object.keys(this.control.errors)[0]
+      console.log(validation)
+      let rules: any = {
+        "required": "Preencha o campo :field",
+        "minlength": "O campo :field deve conter no mínimo :min caracteres",
+        "maxlength": "O campo :field deve conter no máximo :max caracteres",
+        "email": "O e-mail informado não é valído"
+      }
+
+      if(Object.keys(rules).includes(validation)){
+        console.log(validation)
+        let message = rules[validation].replace(':field', this.fieldName);
+
+        if(validation == 'minlength'){
+          return message.replace(':min', this.control.errors['minlength'].requiredLength)
+        }
+
+        if(validation == 'maxlength'){
+          return message.replace(':max', this.control.errors['maxlength'].requiredLength)
+        }
+
+        return message
+      }
+
+    }
+
+    return ''
   }
 
 }

@@ -6,8 +6,5 @@
   [ngClass]="displayCss()"
 >
 <ng-container *ngIf="isValid()">
-  {{ control.errors | json }}
-  <p class="message-error" *ngIf="control.errors?.['required']" >Preencha o campo {{ fieldName }}</p>
-  <p class="message-error" *ngIf="control.errors?.['minlength']" >O campo {{ fieldName }} deve conter {{ control.errors?.['minlength']?.requiredLength }}</p>
-  <p class="message-error" *ngIf="control.errors?.['email']" >O e-mail informado não é valído</p>
+  <p class="message-error">{{ getMessage() }}</p>
 </ng-container>
