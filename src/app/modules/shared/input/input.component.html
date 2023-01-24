@@ -3,11 +3,11 @@
   [id]="name"
   [placeholder]="placeholder"
   [formControl]="control"
-  [ngClass]="display()"
+  [ngClass]="displayCss()"
 >
-<ng-container *ngIf="displayErrors()">
-  <p class="message-error" *ngIf="control.errors?.['required']" >Preencha o campo {{ fieldName() }}</p>
+<ng-container *ngIf="isValid()">
+  {{ control.errors | json }}
+  <p class="message-error" *ngIf="control.errors?.['required']" >Preencha o campo {{ fieldName }}</p>
+  <p class="message-error" *ngIf="control.errors?.['minlength']" >O campo {{ fieldName }} deve conter {{ control.errors?.['minlength']?.requiredLength }}</p>
   <p class="message-error" *ngIf="control.errors?.['email']" >O e-mail informado não é valído</p>
-
-  <p class="message-error" *ngIf="control.errors?.['passwordMatch']" >As senhas não são identicas</p>
 </ng-container>

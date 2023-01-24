@@ -1,5 +1,10 @@
 import { FormControl } from '@angular/forms';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+interface FieldName {
+  name: string,
+  value: string
+}
 
 @Component({
   selector: 'app-input',
@@ -7,7 +12,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./input.component.css']
 })
 
-export class InputComponent {
+export class InputComponent implements OnInit {
   @Input() control: FormControl
   @Input() name:string = 'default'
   @Input() placeholder:string = ''
@@ -15,48 +20,49 @@ export class InputComponent {
   @Input() required:boolean = false
   @Input() readonly:boolean = false
 
+  fieldName: string = ''
+
+  ngOnInit(): void {
+    this.changeFieldDisplayName()
+  }
+
   constructor()
   {
     this.control = new FormControl()
   }
 
-  displayErrors() {
-    const { touched, errors } = this.control;
-    return touched && errors;
+  isValid() {
+    return !this.control.valid && this.control.touched
   }
 
-  display()
+  displayCss()
   {
-    let error = !this.control.valid && this.control.touched
+    let error = this.isValid()
     return {
       "input-control": !error,
       "input-control-error": error
     }
   }
 
-  fieldName(): string
+  private changeFieldDisplayName(): void
   {
-    switch (this.name) {
-      case 'name':
-        return 'nome'
-      break;
+    let defaultInputNames: FieldName[] = [
+      {name: 'name', value: 'nome'},
+      {name: 'email', value: 'email'},
+      {name: 'password', value: 'senha'},
+      {name: 'password_confirmation', value: 'confirmar senha'}
+    ]
 
-      case 'password':
-        return 'senha'
-      break;
+    let result: FieldName[] = defaultInputNames.filter((field) => {
+      return field.name == this.name
+    })
 
-      case 'password_confirmation':
-        return 'confirmar senha'
-      break;
-
-      case 'email':
-        return 'e-mail'
-      break;
-
-      default:
-        return ''
-      break;
+    if(result.length){
+      this.fieldName = result[0].value
+      return
     }
+    this.fieldName = ''
+    return
   }
 
 }
