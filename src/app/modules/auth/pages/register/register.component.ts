@@ -1,8 +1,9 @@
+import { Register } from 'src/app/interfaces/register';
 import { ResponseError } from './../../../../interfaces/response-error';
 import { AuthService } from './../../service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -47,7 +48,7 @@ export class RegisterComponent implements OnInit {
       return
     }
 
-    let data = this.registerForm.value
+    let data: Register = this.registerForm.value
 
     this.authService.register(data)
       .subscribe(response => {
@@ -62,7 +63,7 @@ export class RegisterComponent implements OnInit {
         if(error.status == 422){
           let validations: ResponseError = error.error
           let data: any = validations.data
-          Object.keys(validations.data).forEach(key => {
+          Object.keys(data).forEach(key => {
             this.validationApi.push(data[key][0])
           })
           return

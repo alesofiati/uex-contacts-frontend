@@ -6,6 +6,7 @@ import { LabelComponent } from './label/label.component';
 import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { InputComponent } from './input/input.component';
+import { AlertComponent } from './alert/alert.component';
 
 
 
@@ -14,7 +15,8 @@ import { InputComponent } from './input/input.component';
     LabelComponent,
     ButtonComponent,
     CardComponent,
-    InputComponent
+    InputComponent,
+    AlertComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { InputComponent } from './input/input.component';
     LabelComponent,
     ButtonComponent,
     CardComponent,
-    InputComponent
+    InputComponent,
+    AlertComponent
   ]
 })
 export class SharedModule { }
