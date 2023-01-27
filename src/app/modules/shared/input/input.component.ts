@@ -69,7 +69,6 @@ export class InputComponent implements OnInit {
   {
     if(this.control?.errors){
       let validation:string = Object.keys(this.control.errors)[0]
-      console.log(validation)
       let rules: any = {
         "required": "Preencha o campo :field",
         "minlength": "O campo :field deve conter no mínimo :min caracteres",
@@ -78,7 +77,6 @@ export class InputComponent implements OnInit {
       }
 
       if(Object.keys(rules).includes(validation)){
-        console.log(validation)
         let message = rules[validation].replace(':field', this.fieldName);
 
         if(validation == 'minlength'){

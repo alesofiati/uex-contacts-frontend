@@ -1,5 +1,8 @@
 <div class="flex h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8">
+    <ul class="mb-2" *ngFor="let message of validationApi">
+      <li>{{ message }}</li>
+    </ul>
     <form class="bg-white shadow-md rounded px-6 pt-6 pb-6 mb-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
         <app-label description="Nome" for="name"/>
@@ -17,11 +20,8 @@
         <app-label description="Confirmar Senha" for="password_confirmation"/>
         <app-input name="password_confirmation" type="password" placeholder="Confirmar Senha" [control]="$any(registerForm.get('password_confirmation'))"/>
       </div>
-      <div class="p-2">
-        {{registerForm.value | json}}
-      </div>
       <div class="flex items-center justify-between">
-        <app-button description="Cadastrar" [disabled]="!registerForm.valid"/>
+        <app-button description="Salvar" [disabled]="!registerForm.valid"/>
         <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" routerLink="/login">
           Login
         </a>
