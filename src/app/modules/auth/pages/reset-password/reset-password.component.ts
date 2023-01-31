@@ -1,10 +1,10 @@
-import { RouterService } from './../../../shared/service/router.service';
 import { ResponseSuccess } from './../../../../interfaces/response-success';
 import { ResetPassword } from './../../../../interfaces/reset-password';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { RouterService } from './../../../shared/service/router.service';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',

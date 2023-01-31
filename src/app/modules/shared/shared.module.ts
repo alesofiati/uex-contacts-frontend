@@ -7,6 +7,7 @@ import { ButtonComponent } from './button/button.component';
 import { CardComponent } from './card/card.component';
 import { InputComponent } from './input/input.component';
 import { AlertComponent } from './alert/alert.component';
+import { AuthService } from './service/auth/auth.service';
 
 
 
@@ -28,6 +29,7 @@ import { AlertComponent } from './alert/alert.component';
     CardComponent,
     InputComponent,
     AlertComponent
-  ]
+  ],
+  providers: [AuthService]
 })
 export class SharedModule { }

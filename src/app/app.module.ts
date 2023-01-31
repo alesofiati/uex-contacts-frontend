@@ -1,3 +1,6 @@
+import { SharedModule } from './modules/shared/shared.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { AuthGuard } from './guards/auth-guard';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,11 +17,13 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
+    DashboardModule,
     AuthModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

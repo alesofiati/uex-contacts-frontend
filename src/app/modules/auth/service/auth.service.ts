@@ -1,3 +1,4 @@
+import { Login } from './../../../interfaces/login';
 import { ResponseError } from './../../../interfaces/response-error';
 import { ResponseSuccess } from './../../../interfaces/response-success';
 import { ForgotPassword } from './../../../interfaces/forgot-password';
@@ -18,6 +19,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  login(data: Login): Observable<ResponseSuccess>
+  {
+    return this.http.post<ResponseSuccess>(`${this.apiUrl}/login`, data);
+  }
 
   register(data: Register): Observable<ResponseSuccess|ResponseError>
   {
