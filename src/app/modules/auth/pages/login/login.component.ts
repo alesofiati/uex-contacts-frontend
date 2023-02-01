@@ -15,6 +15,11 @@ export class LoginComponent {
 
   form: FormGroup
 
+  message: string =''
+  error: boolean = false
+  color: string = 'bg-red-500'
+  validationApi: string[] = []
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
@@ -45,7 +50,20 @@ export class LoginComponent {
         this.autenticated.sessionInit(user, token)
       },
       error => {
+        let response = error.error
+        switch (error.status) {
+          case 422:
+            let data: any = response.data
+            Object.keys(data).forEach(key => {
+              this.validationApi.push(data[key][0])
+            })
+          break;
 
+          default:
+            this.message = response.message
+            this.error = true
+          break;
+        }
       }
     )
   }

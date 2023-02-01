@@ -1,7 +1,11 @@
 <div class="flex h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8">
     <app-card>
+      <ul class="mb-2" *ngFor="let message of validationApi">
+        <li>{{ message }}</li>
+      </ul>
       <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+        <app-alert [message]="message" [show]="error" [color]="color" />
         <div class="mb-4">
           <app-label description="E-mail" for="email" />
           <app-input name="email" type="email" placeholder="E-mail" [control]="$any(form.get('email'))"/>
